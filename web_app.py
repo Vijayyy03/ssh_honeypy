@@ -57,7 +57,7 @@ def country_lookup(country):
     if country == 'True':
         get_ip_to_country = ip_to_country_code(creds_audits_log_df)
         top_country = top_10_calculator(get_ip_to_country, "Country_Code")
-        message = dbc.Col(dcc.Graph(figure=px.bar(top_country, x="Country_Code", y='count')), style={'width': '33%', 'display': 'inline-block'})
+        message = dbc.Col(dcc.Graph(figure=px.bar(top_country, x="Country_Code", y='Count')), style={'width': '33%', 'display': 'inline-block'})
     else:
         message = "No Country Panel Defined"
     return message
@@ -109,14 +109,14 @@ app.layout = dbc.Container([
     html.Div([html.Img(src=image, style={'height': '25%', 'width': '25%'})], style={'textAlign': 'center'}, className='dbc'),
     # Row 1 - 3 Top 10 Dashboards, IP Address, Usernames, and Passwords.
     dbc.Row([
-        dbc.Col(dcc.Graph(figure=px.bar(top_ip_address, x="ip_address", y='count')), width=4),
-        dbc.Col(dcc.Graph(figure=px.bar(top_usernames, x='username', y='count')), width=4),
-        dbc.Col(dcc.Graph(figure=px.bar(top_passwords, x='password', y='count')), ),
+        dbc.Col(dcc.Graph(figure=px.bar(top_ip_address, x="ip_address", y='Count')), width=4),
+        dbc.Col(dcc.Graph(figure=px.bar(top_usernames, x='username', y='Count')), width=4),
+        dbc.Col(dcc.Graph(figure=px.bar(top_passwords, x='password', y='Count')), ),
     ], align='center', class_name='mb-4'),
 
     # Row 2: Top 10 Commands + Country Codes.
     dbc.Row([
-        dbc.Col(dcc.Graph(figure=px.bar(top_cmds, x='Command', y='count')), style={'width': '33%', 'display': 'inline-block'}),
+        dbc.Col(dcc.Graph(figure=px.bar(top_cmds, x='Command', y='Count')), style={'width': '33%', 'display': 'inline-block'}),
         country_lookup(country)
     ], align='center', class_name='mb-4'),
 

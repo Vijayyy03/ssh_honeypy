@@ -44,14 +44,16 @@ def parse_cmd_audits_log(cmd_audits_log_file):
     return df
 
 # Calculator to generate top 10 values from a dataframe. Supply a column name, counts how often each value occurs, stores in "count" column, then return dataframe with value/count.
-def top_10_calculator(dataframe, column):
-
-    for col in dataframe.columns:
-        if col == column:
-            top_10_df = dataframe[column].value_counts().reset_index().head(10)
-            top_10_df.columns = [column, "count"]
-
+def top_10_calculator(df, column):
+    if not df.empty:
+        # Assuming the logic counts the top 10 entries in the specified column:
+        top_10_df = df[column].value_counts().head(10).reset_index()
+        top_10_df.columns = [column, 'Count']
+    else:
+        # If the dataframe is empty, return an empty dataframe with the expected columns.
+        top_10_df = pd.DataFrame({column: [], 'Count': []})
     return top_10_df
+
 
 # Takes an IP address as string type, uses the Cleantalk API to look up IP Geolocation.
 def get_country_code(ip):

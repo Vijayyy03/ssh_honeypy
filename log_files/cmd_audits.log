@@ -1,1 +1,4 @@
-
+Client 192.168.128.1 attempted connection with username: dummy, password: 9999
+Command b"it's my progress"executed by 192.168.128.1
+Command b'to get it \x7fdone'executed by 192.168.128.1
+Command b'hello'executed by 192.168.128.1
